@@ -1,0 +1,11 @@
+{
+  "name": "fixed-width-file-generator",
+  "version": "1.0.0",
+  "description": "Small site to help with the formatting and creation of fixed width files with the intent to reduce human err by introducing form validation to the input process.",
+  "main": "index.js",
+  "scripts": {
+    "test": "gn serve --open"
+  },
+  "author": "MeddlerOnTheRoof",
+  "license": "ISC"
+}
