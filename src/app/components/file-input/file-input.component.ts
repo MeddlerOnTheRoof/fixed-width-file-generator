@@ -72,6 +72,8 @@ export class FileInputComponent implements OnInit {
           break;
       }
 
+      fieldValueAsStr = String(fieldValueAsStr);
+
       newLine += fieldValueAsStr;
 
       if(fieldValueAsStr.length < field.length) {
