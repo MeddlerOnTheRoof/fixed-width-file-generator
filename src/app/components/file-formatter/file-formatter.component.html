@@ -1,0 +1,39 @@
+<div class="child-component-container">
+    <form (ngSubmit)="submit()">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Field Name</th>
+                    <th>Field Size</th>
+                    <th>Required</th>
+                    <th>Field Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let field of fields; index as i">
+                    <td>{{ field.id }}</td>
+                    <td class="pseudo-link" (click)="editField(field.id)">{{ field.name }}</td>
+                    <td>{{ field.length }}</td>
+                    <td>
+                        <span *ngIf="field.required" class="badge badge-danger">Required</span>
+                    </td>
+                    <td>{{ getTypeName(field.dataTypeId) }}</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <button class="btn btn-outline-primary" (click)="editField(0)" type="button">Add field</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="form-controls pull-right">
+            <button class="btn btn-outline-success" type="submit">Save</button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="showFieldDetail">
+    <field-detail [field]="field" (submissionEmitter)="onDetailSubmission($event)" (closeModalEmitter)="onCloseModal($event)"></field-detail>
+</div>

@@ -1,0 +1,63 @@
+<div class="child-component-container">
+    <form (ngSubmit)="saveLine()" ngNativeValidate>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Field Name</th>
+                    <th>Required</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let field of fields">
+                    <td>{{ field.id }}</td>
+                    <td>{{ field.name }}</td>
+                    <td>
+                        <span *ngIf="field.required" class="badge badge-danger">Required</span>
+                    </td>
+                    <td>
+                        <input type="text" *ngIf="field.dataTypeId === 1" class="form-control" [name]="field.fieldName" [(ngModel)]="field.userInput" [attr.maxLength]="field.length" />
+
+                        <input type="number" *ngIf="field.dataTypeId === 2" class="form-control" [name]="field.fieldName" [(ngModel)]="field.userInput" [attr.max]="field.numberLength" min="0" />
+
+                        <label class="fancy-checkbox" *ngIf="field.dataTypeId === 3">
+                            <input type="checkbox" name="required"  [name]="field.fieldName" [(ngModel)]="field.userInput" />
+                            <i class="fa fa-square-o fa-3x unchecked"></i>
+                            <i class="fa fa-check-square-o fa-3x checked"></i> 
+                        </label>
+
+                        <input type="date" *ngIf="field.dataTypeId === 4" class="form-control" [name]="field.fieldName" [(ngModel)]="field.userInput" [attr.maxLength]="field.length" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="form-controls pull-right">
+                            <button type="submit" class="btn btn-outline-success" [disabled]="disableSubmission()">Save Line</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <hr>
+
+    <form class="row" (ngSubmit)="download()" #f="ngForm">
+        <div class="col-lg-4 pull-left align-middle">
+            <h4>Fixed Width File</h4>
+        </div>
+        <div class="col-lg-4 form-group">
+            <input type="text" class="form-control pull-center" name="fileNameInput" [(ngModel)]="fileName" #fileNameInput="ngModel" placeholder="File Name" required />
+        </div>
+        <div class="col-lg-4">
+            <button type="submit" class="btn btn-outline-primary pull-right" [disabled]="!f.form.valid">
+                <i class="fa fa-print"></i> Download
+            </button>
+        </div>
+    </form>
+
+    <hr>
+
+    <p *ngFor="let line of lines">{{ line }}</p>
+</div>
