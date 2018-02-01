@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    overflow: hidden;
+}
+
+.child-component-container {
+    height: 80vh;
+    width: 100%;
+    padding: 3vh 10% 3vh 10%;
+    top: 15vh;
+    left: 0;
+    bottom: 5vh;
+    position: absolute;
+    overflow: auto;
+}
+
+.fancy-checkbox input[type="checkbox"],
+.fancy-checkbox .checked {
+    display: none;
+}
+
+label.fancy-checkbox > i {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.fancy-checkbox input[type="checkbox"], .fancy-checkbox .checked {
+    display: none;
+}
+ 
+.fancy-checkbox input[type="checkbox"]:checked ~ .checked {
+    display: inline-block;
+}
+ 
+.fancy-checkbox input[type="checkbox"]:checked ~ .unchecked {
+    display: none;
+}
+
+div.fancy-checkbox {
+    vertical-align: middle;
+    line-height: 600%;
+}
